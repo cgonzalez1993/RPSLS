@@ -11,7 +11,19 @@ let player1Response = false;
 let player2Response = false;
 
 let cpuBtn = document.getElementById("cpuBtn").addEventListener("click", () => {
-    setTimeout(() => { playerVsCpu(); }, 1000);
+    setTimeout(() => {
+        loadPlayerVsCpu("../pages/playerVsCpu.html");
+        loadGameModeBtns("../gameModeBtns.html");
+        playerVsCpu();
+    }, 1000);
+})
+
+let pvpBtn = document.getElementById("pvpBtn").addEventListener("click", () => {
+    setTimeout(() => {
+        loadPlayerVsPlayer("../pages/pvp.html");
+        loadGameModeBtns("../gameModeBtns.html");
+        playerVsplayer();
+    }, 1000);
 })
 
 document.onkeydown = function (e) {
@@ -28,7 +40,7 @@ document.onkeydown = function (e) {
         e.preventDefault();
         playerSelection = "Paper";
         console.log(e.key);
-        if (againstCPU) playerVsCpu(); 
+        if (againstCPU) playerVsCpu();
         else {
             playerVsPlayer();
         }
@@ -96,7 +108,7 @@ async function playerVsCpu() {
     if (playerSelection == "Spock") {
         if (computerRandom == "Rock") alert("Winner! Spock vaporizes Rock.")
         if (computerRandom == "Scissors") alert("Winner! Spock smashes Scissors.")
-        if (computerRandom == "Spock") alert("Aww you lost! Paper disproves Spock.")
+        if (computerRandom == "Paper") alert("Aww you lost! Paper disproves Spock.")
         if (computerRandom == "Lizard") alert("Aww you lost! Lizard poisons Spock.")
     }
 }
@@ -138,6 +150,33 @@ function playerVsPlayer() {
     }
 }
 
-function loadPlayerVsCpu(inject) {
+function loadPlayerVsCpu() {
+    fetch("../pages/playerVsCpu.html")
+    .then((response) => { 
+        return response.text();
+    })
+    .then((html) =>{
+        injectHere.innerHTML = html;
+    });
+}
 
+function loadPlayerVsPlayer() {
+    fetch("../pages/pvp.html")
+        .then((response) => {
+            return response.text();
+        })
+        .then((html) => {
+            injectHere.innerHTML = html;
+        });
+}
+
+
+function loadGameModeBtns() {
+    fetch("../pages/gameModeBtns.html")
+        .then((response) => {
+            return response.text();
+        })
+        .then((html) => {
+            injectBtns.innerHTML = html;
+        });
 }
