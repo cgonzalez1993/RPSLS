@@ -31,34 +31,53 @@ Carlos Gonzalez
                 <h1 class="thiccFont center"> S<img src="./images/scissors.png" class="titleImg"
                         alt="image of scissors">ISSORS &nbsp; LI<img src="./images/lizard.png" class="titleImg"
                         alt="image of a lizard">ARD </h1>
-                <h1 class="thiccFont center"> SP<img src="./images/spock.png" class="titleImg"
-                        alt="image of Spock">CK</h1>
+                <h1 class="thiccFont center"> SP<img src="./images/spock.png" class="titleImg" alt="image of Spock">CK
+                </h1>
             </div>
         </div>
     </div>
     <div id="injectHere" class="container-fluid mt-5">
-        <div class="row">
+        <div class="row gamePadding">
             <div class="col-12 mt-3">
-                <p class="center rulesText1">Rules of the game</p>
-                <p class="center rulesText2">Scissors cuts paper. Paper covers rock. Rock crushes lizard.</p> 
-                <p class="center rulesText2">Lizard poisons Spock. Spock smashes scissors. Scissors decapitates lizard.</p>  
-                <p class="center rulesText2">Lizard eats paper. Paper disproves Spock. Spock vaporizes rock. Rock crushes scissors.</p>
+                <p class="center rulesText1 mb-5">Rules of the game</p>
+                <p class="center rulesText2">Scissors cuts paper. Paper covers rock. Rock crushes lizard.</p>
+                <p class="center rulesText2">Lizard poisons Spock. Spock smashes scissors. Scissors decapitates lizard.
+                </p>
+                <p class="center rulesText2">Lizard eats paper. Paper disproves Spock. Spock vaporizes rock. Rock
+                    crushes scissors.</p>
             </div>
         </div>
     </div>
-    <br /> <br /> <br /> <br /> <br /> <br /> <br />
-    <br /> <br /> <br /> <br /> <br /> <br /> <br />
     <div id="injectBtns" class="container-fluid">
         <div class="row">
+            <div class="col-12">
+                <p class="center rulesText1 mb-5">Select a Game Mode!</p>
+            </div>
             <div class="col-4 center">
+                
                 <button id="pvpBtn" type="button" class="btn allBtn">Player 1 vs Player 2</button>
             </div>
             <div class="col-4 center">
-                <button id="cpuBtn" type="button" class="btn allBtn">Player 1 vs CPU</button>
+                <button id="cpuBtn" type="button" class="btn allBtn">You vs CPU</button>
             </div>
             <div class="col-4 center">
-                <button id="pvgodBtn" type="button" class="btn allBtn">Player 1 vs GOD++</button>
+                <button id="pvGodBtn" type="button" class="btn allBtn">You vs GOD++</button>
             </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 center mt-5">
+                <p class="controlText1">Controls</p>
+            </div>
+            <div class="col-12 center">
+                <li class="controlText2">ctrl+r = Rock</li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                <li class="controlText2">ctrl+p= Paper</li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                <li class="controlText2">ctrl+s = Scissors</li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <li class="controlText2">ctrl+l = Lizard</li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                <li class="controlText2">ctrl+k = Spock</li>
+            </div>
+        </div>
+        <div id="goHome" class="col-12 center mt-5 abraCadabra">
+            <button onclick="window.location.href='../index.html'" type="button" class="btn allBtn">Return Home</button>
         </div>
     </div>
 

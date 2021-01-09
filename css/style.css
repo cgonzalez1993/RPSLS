@@ -61,3 +61,46 @@
     font-size: 50px;
     font-family: 'Balsamiq Sans', cursive;
 }
+
+.gameText2 {
+    font-size: 24px;
+    font-family: 'Balsamiq Sans', cursive;
+}
+
+.gameText3 {
+    font-size: 32px;
+    font-family: 'Balsamiq Sans', cursive;
+}
+
+.controlText1 {
+    font-size: 30px;
+    font-family: 'Balsamiq Sans', cursive;
+}
+
+.controlText2 {
+    font-size: 20px;
+    font-family: 'Balsamiq Sans', cursive;
+}
+
+.gamePadding {
+    padding: 0 0 6rem;
+}
+
+.abraCadabra {
+    display: none;
+}
+
+.end {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.start {
+    display: flex;
+    justify-content: first baseline;
+}
+
+.noPadding {
+    padding: 0 !important;
+    margin: 0 !important;
+}

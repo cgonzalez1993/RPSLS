@@ -9,28 +9,34 @@ let computerRandom = "";
 let againstCPU = false;
 let player1Response = false;
 let player2Response = false;
+let oneGameMode = false;
+let bestOfThreeMode = false;
+let bestOfSevenMode = false;
+let gameCount = 0
 
-let cpuBtn = document.getElementById("cpuBtn").addEventListener("click", () => {
-    setTimeout(() => {
-        loadPlayerVsCpu("../pages/playerVsCpu.html");
-        loadGameModeBtns("../gameModeBtns.html");
-        playerVsCpu();
-    }, 1000);
-})
 
-let pvpBtn = document.getElementById("pvpBtn").addEventListener("click", () => {
+let hideCpu = document.getElementById("hideCpu");
+
+
+let cpuBtn = document.getElementById("cpuBtn");
+cpuBtn.addEventListener("click", () => {
     setTimeout(() => {
-        loadPlayerVsPlayer("../pages/pvp.html");
         loadGameModeBtns("../gameModeBtns.html");
-        playerVsplayer();
     }, 1000);
-})
+});
+
+let pvpBtn = document.getElementById("pvpBtn")
+pvpBtn.addEventListener("click", () => {
+    setTimeout(() => {
+        loadGameModeBtns("../gameModeBtns.html");
+    }, 1000);
+});
 
 document.onkeydown = function (e) {
     if (e.ctrlKey && e.key == "r") {
         e.preventDefault();
         playerSelection = "Rock";
-        console.log(playerSelection);
+        console.log("You selected: " + playerSelection);
         if (againstCPU) playerVsCpu();
         else {
             playerVsPlayer();
@@ -39,7 +45,7 @@ document.onkeydown = function (e) {
     else if (e.ctrlKey && e.key == "p") {
         e.preventDefault();
         playerSelection = "Paper";
-        console.log(e.key);
+        console.log("You selected: " + playerSelection);
         if (againstCPU) playerVsCpu();
         else {
             playerVsPlayer();
@@ -48,7 +54,7 @@ document.onkeydown = function (e) {
     else if (e.ctrlKey && e.key == "s") {
         e.preventDefault();
         playerSelection = "Scissors";
-        console.log(e.key);
+        console.log("You selected: " + playerSelection);
         if (againstCPU) playerVsCpu();
         else {
             playerVsPlayer();
@@ -57,7 +63,7 @@ document.onkeydown = function (e) {
     else if (e.ctrlKey && e.key == "l") {
         e.preventDefault();
         playerSelection = "Lizard";
-        console.log(e.key);
+        console.log("You selected: " + playerSelection);
         if (againstCPU) playerVsCpu();
         else {
             playerVsPlayer();
@@ -66,7 +72,7 @@ document.onkeydown = function (e) {
     else if (e.ctrlKey && e.key == "k") {
         e.preventDefault();
         playerSelection = "Spock";
-        console.log(e.key);
+        console.log("You selected: " + playerSelection);
         if (againstCPU) playerVsCpu();
         else {
             playerVsPlayer();
@@ -76,46 +82,141 @@ document.onkeydown = function (e) {
 
 //Player vs CPU
 async function playerVsCpu() {
+    let injectResult = document.getElementById("injectResult");
+    let player1ScoreAdd = document.getElementById("player1ScoreAdd");
+    let cpuScoreAdd = document.getElementById("cpuScoreAdd");
+    let player1Score = 0;
+    let cpuScore = 0;
+
     againstCPU = true;
     let computerRandom = await fetchItems.getValue();
-    console.log(computerRandom);
-    if (computerRandom == playerSelection)
-        alert("It's a draw!");
+    console.log("CPU selected: " + computerRandom);
+    if (computerRandom == playerSelection) {
+        injectResult.innerText = "It's a draw!";
+    }
     if (playerSelection == "Rock") {
-        if (computerRandom == "Scissors") alert("Winner! Rock smashes Scissors.")
-        if (computerRandom == "Lizard") alert("Winner! Rock smashes Lizard.")
-        if (computerRandom == "Paper") alert("Aww you lost! Paper covers Rock.")
-        if (computerRandom == "Spock") alert("Aww you lost! Spock vaporizes Rock.")
+        if (computerRandom == "Scissors") {
+            player1Score++;
+            player1Scoredd.innerText = player1Score;
+            injectResult.innerText = "Winner! Rock smashes Scissors.";
+        }
+
+        if (computerRandom == "Lizard") {
+            player1Score++;
+            player1ScoreAdd.innerText = player1Score;
+            injectResult.innerText = "Winner! Rock smashes Lizard.";
+        }
+        if (computerRandom == "Paper") {
+            cpuScore++;
+            cpuScoreAdd.innerText = cpuScore;
+            injectResult.innerText = "Aww you lost! Paper covers Rock.";
+        }
+        if (computerRandom == "Spock") {
+            cpuScore++;
+            cpuScoreAdd.innerText = cpuScore;
+            injectResult.innerText = "Aww you lost! Spock vaporizes Rock.";
+        }
     }
     if (playerSelection == "Paper") {
-        if (computerRandom == "Spock") alert("Winner! Paper disproves Spock.")
-        if (computerRandom == "Rock") alert("Winner! Paper covers Rock.")
-        if (computerRandom == "Scissors") alert("Aww you lost! Scissors cuts Paper.")
-        if (computerRandom == "Lizard") alert("Aww you lost! Lizard eats Paper.")
+        if (computerRandom == "Spock") {
+            player1Score++;
+            player1ScoreAdd.innerText = player1Score;
+            injectResult.innerText = "Winner! Paper disproves Spock.";
+        }
+        if (computerRandom == "Rock") {
+            player1Score++;
+            player1ScoreAdd.innerText = player1Score;
+            injectResult.innerText = "Winner! Paper covers Rock.";
+        }
+        if (computerRandom == "Scissors") {
+            cpuScore++;
+            cpuScoreAdd.innerText = cpuScore;
+            injectResult.innerText = "Aww you lost! Scissors cuts Paper.";
+        }
+        if (computerRandom == "Lizard") {
+            cpuScore++;
+            cpuScoreAdd.innerText = cpuScore;
+            injectResult.innerText = "Aww you lost! Lizard eats Paper.";
+        }
     }
     if (playerSelection == "Scissors") {
-        if (computerRandom == "Lizard") alert("Winner! Scissors decapitates Lizard.")
-        if (computerRandom == "Paper") alert("Winner! Scissors cuts paper.")
-        if (computerRandom == "Rock") alert("Aww you lost! Rock smashes Scissors.")
-        if (computerRandom == "Spock") alert("Aww you lost! Spock smasges Scissors.")
+        if (computerRandom == "Lizard") {
+            player1Score++;
+            player1ScoreAdd.innerText = player1Score;
+            injectResult.innerText = "Winner! Scissors decapitates Lizard.";
+        }
+        if (computerRandom == "Paper") {
+            player1Score++;
+            player1ScoreAdd.innerText = player1Score;
+            injectResult.innerText = "Winner! Scissors cuts paper.";
+        }
+        if (computerRandom == "Rock") {
+            cpuScore++;
+            cpuScoreAdd.innerText = cpuScore;
+            injectResult.innerText = "Aww you lost! Rock smashes Scissors.";
+        }
+        if (computerRandom == "Spock") {
+            cpuScore++;
+            cpuScoreAdd.innerText = cpuScore;
+            injectResult.innerText = "Aww you lost! Spock smasges Scissors.";
+        }
     }
     if (playerSelection == "Lizard") {
-        if (computerRandom == "Paper") alert("Winner! Lizard eats Paper.")
-        if (computerRandom == "Spock") alert("Winner! Lizard poisons Spock.")
-        if (computerRandom == "Rock") alert("Aww you lost! Rock smashes Lizard.")
-        if (computerRandom == "Scissors") alert("Aww you lost! Scissors decapitate Lizard.")
+        if (computerRandom == "Paper") {
+            player1Score++;
+            player1ScoreAdd.innerText = player1Score;
+            injectResult.innerText = "Winner! Lizard eats Paper.";
+        }
+        if (computerRandom == "Spock") {
+            player1Score++;
+            player1ScoreAdd.innerText = player1Score;
+            injectResult.innerText = "Winner! Lizard poisons Spock.";
+        }
+        if (computerRandom == "Rock") {
+            cpuScore++;
+            cpuScoreAdd.innerText = cpuScore;
+            injectResult.innerText = "Aww you lost! Rock smashes Lizard.";
+        }
+        if (computerRandom == "Scissors") {
+            cpuScore++;
+            cpuScoreAdd.innerText = cpuScore;
+            injectResult.innerText = "Aww you lost! Scissors decapitate Lizard.";
+        }
     }
     if (playerSelection == "Spock") {
-        if (computerRandom == "Rock") alert("Winner! Spock vaporizes Rock.")
-        if (computerRandom == "Scissors") alert("Winner! Spock smashes Scissors.")
-        if (computerRandom == "Paper") alert("Aww you lost! Paper disproves Spock.")
-        if (computerRandom == "Lizard") alert("Aww you lost! Lizard poisons Spock.")
+        if (computerRandom == "Rock") {
+            player1Score++;
+            player1ScoreAdd.innerText = player1Score;
+            injectResult.innerText = "Winner! Spock vaporizes Rock.";
+        }
+        if (computerRandom == "Scissors") {
+            player1Score++;
+            player1ScoreAdd.innerText = player1Score;
+            injectResult.innerText = "Winner! Spock smashes Scissors.";
+        }
+        if (computerRandom == "Paper") {
+            cpuScore++;
+            cpuScoreAdd.innerText = cpuScore;
+            injectResult.innerText = "Aww you lost! Paper disproves Spock.";
+        }
+        if (computerRandom == "Lizard") {
+            cpuScore++;
+            cpuScoreAdd.innerText = cpuScore;
+            injectResult.innerText = "Aww you lost! Lizard poisons Spock.";
+        }
     }
+    console.log(player1Score)
 }
-//async function that does fetching call function and pass api response into that function
+
 
 //Player1 vs Player 2
 function playerVsPlayer() {
+    let injectResult = document.getElementById("injectResult");
+    let player1ScoreAdd = document.getElementById("player1ScoreAdd");
+    let player2ScoreAdd = document.getElementById("cpuScoreAdd");
+    let player1Score = 0;
+    let player2Score = 0;
+
     if (playerSelection == player2Selection)
         alert("It's a draw!");
     if (playerSelection == "Rock") {
@@ -150,14 +251,21 @@ function playerVsPlayer() {
     }
 }
 
+
+//Injecting game pages and buttons
 function loadPlayerVsCpu() {
     fetch("../pages/playerVsCpu.html")
-    .then((response) => { 
-        return response.text();
-    })
-    .then((html) =>{
-        injectHere.innerHTML = html;
-    });
+        .then((response) => {
+            return response.text();
+        })
+        .then((html) => {
+            injectHere.innerHTML = html;
+        });
+    setTimeout(() => {
+        console.log("test");
+        playerVsCpu();
+    }, 1000);
+
 }
 
 function loadPlayerVsPlayer() {
@@ -170,7 +278,6 @@ function loadPlayerVsPlayer() {
         });
 }
 
-
 function loadGameModeBtns() {
     fetch("../pages/gameModeBtns.html")
         .then((response) => {
@@ -178,5 +285,43 @@ function loadGameModeBtns() {
         })
         .then((html) => {
             injectBtns.innerHTML = html;
+
+            let oneGame = document.getElementById("oneGame");
+            oneGame.addEventListener("click", () => {
+                setTimeout(() => {
+                    loadPlayerVsCpu("../pages/playerVsCpu.html");
+                    //loadGameModeBtns("../gameModeBtns.html");
+                    playerVsCpu();
+                    let removeBtn = document.getElementById("removeBtn").classList.add("abraCadabra");
+                    let roundsAmount1 = document.getElementById("roundsAmount1").classList.add("abraCadabra");
+                    let displayRounds = document.getElementById("displayRounds").classList.remove("d-none");
+                }, 1000);
+            });
+
+            let bestOfThree = document.getElementById("bestOfThree");
+            bestOfThree.addEventListener("click", () => {
+                setTimeout(() => {
+                    loadPlayerVsCpu("../pages/playerVsCpu.html");
+                    //loadGameModeBtns("../gameModeBtns.html");
+                    playerVsCpu();
+                    let removeBtn = document.getElementById("removeBtn").classList.add("abraCadabra");
+                    let roundsAmount1 = document.getElementById("roundsAmount1").classList.add("abraCadabra");
+                    let displayRounds = document.getElementById("displayRounds").classList.remove("d-none");
+                    let roundsAmount4 = document.getElementById("roundsAmount4").innerText = "3";
+                }, 1000);
+            });
+
+            let bestOfSeven = document.getElementById("bestOfSeven");
+            bestOfSeven.addEventListener("click", () => {
+                setTimeout(() => {
+                    loadPlayerVsCpu("../pages/playerVsCpu.html");
+                    //loadGameModeBtns("../gameModeBtns.html");
+                    playerVsCpu();
+                    let removeBtn = document.getElementById("removeBtn").classList.add("abraCadabra");
+                    let roundsAmount1 = document.getElementById("roundsAmount1").classList.add("abraCadabra");
+                    let displayRounds = document.getElementById("displayRounds").classList.remove("d-none");
+                    let roundsAmount4 = document.getElementById("roundsAmount4").innerText = "7";
+                }, 1000);
+            });
         });
 }

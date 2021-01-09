@@ -1,21 +1,31 @@
-<div class="container-fluid">
+<div id="hideCpu" class="container-fluid">
+    <div class="row ">
+        <div class="col-12 center mb-5">
+            <h2 id="injectResult" class="gameText">Select your weapon!</h2>
+        </div>
+    </div>
     <div class="row">
         <div class="col-6 center">
-            <h2 class="gameText">Player 1</h2>
-            
+            <h2 class="gameText3 center">Score:&nbsp; <p id="player1ScoreAdd" class ="gameText3 center"> 0</p></h2>
         </div>
-        
+        <div class="col-6 center">
+            <h2 id="cpuScore" class="gameText3 center">Score:&nbsp; <p id="cpuScoreAdd" class="gameText3 center"> 0</p></h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 center">
+            <h2 class="gameText">You</h2>
+        </div>
         <div class="col-6 center">
             <h2 class="gameText">CPU</h2>
         </div>
     </div>
-    <div class="row">
-        <div class="col-6 center">
+    <div class="row gamePadding">
+        <div id="player1Pick" class="col-6 center">
             <img src="../images/lizard.png" width=100px height=100px>
         </div>
-        <div class="col-6 center">
+        <div id="player2Pick" class="col-6 center">
             <img src="../images/lizard.png" width=100px height=100px>
         </div>
     </div>
 </div>
-

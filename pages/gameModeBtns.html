@@ -1,5 +1,23 @@
-<div class="container-fluid">
-    <div class="row">
+<div class="container-fluid ">
+    <div id="hidePrompt" class="row">
+        <div class="col-12">
+            <h3 id="roundsAmount1" class="rulesText1 center mb-5">Select how many rounds to play!</h3>
+        </div>
+    </div>
+    <div id="displayRounds" class="row mb-3 d-none">
+        <div class="col-1"></div>
+        <div class="col-4">
+            <h3 id="roundsAmount2" class="rulesText1 end">1</h3>
+        </div>
+        <div class="col-2">
+            <h3 id="roundsAmount3" class="rulesText1 mb-5 center noPadding">of</h3>
+        </div>
+        <div class="col-4">
+            <h3 id="roundsAmount4" class="rulesText1 mb-5 start">1</h3>
+        </div>
+        <div class="col-1"></div>
+    </div>
+    <div class="row" id="removeBtn">
         <div class="col-4 center">
             <button id="oneGame" type="button" class="btn allBtn">1 Game</button>
         </div>
@@ -9,5 +27,23 @@
         <div class="col-4 center">
             <button id="bestOfSeven" type="button" class="btn allBtn">Best of 7</button>
         </div>
+    </div>
+</div>
+
+<div class="containter-fluid">
+    <div class="row mt-5">
+        <div class="col-12 center mt-5">
+            <p class="controlText1">Controls</p>
+        </div>
+        <div class="col-12 center">
+            <li class="controlText2">ctrl+r = Rock</li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <li class="controlText2">ctrl+p= Paper</li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <li class="controlText2">ctrl+s = Scissors</li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <li class="controlText2">ctrl+l = Lizard</li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <li class="controlText2">ctrl+k = Spock</li>
+        </div>
+    </div>
+    <div class="col-12 center mt-5">
+        <button onclick="window.location.href='../index.html'" type="button" class="btn allBtn">Return Home</button>
     </div>
 </div>
