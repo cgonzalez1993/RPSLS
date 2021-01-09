@@ -7,13 +7,12 @@ let playerSelection = "";
 let player2Selection = "";
 let computerRandom = "";
 let againstCPU = false;
+let againstPvp = false;
 let player1Response = false;
 let player2Response = false;
-let oneGameMode = false;
-let bestOfFiveMode = false;
-let bestOfSevenMode = false;
 let gameCount = 1;
 let player1Score = 0;
+let player2Score = 0;
 let cpuScore = 0;
 let unlocked = true;
 
@@ -30,54 +29,6 @@ pvpBtn.addEventListener("click", () => {
         loadGameModeBtns("../gameModeBtns.html");
     }, 1000);
 });
-
-// document.onkeydown = function (e) {
-//     if (e.altKey && e.key == "r") {
-//         e.preventDefault();
-//         playerSelection = "Rock";
-//         console.log("You selected: " + playerSelection);
-//         if (againstCPU) playerVsCpu();
-//         else {
-//             playerVsPlayer();
-//         }
-//     }
-//     else if (e.altKey && e.key == "p") {
-//         e.preventDefault();
-//         playerSelection = "Paper";
-//         console.log("You selected: " + playerSelection);
-//         if (againstCPU) playerVsCpu();
-//         else {
-//             playerVsPlayer();
-//         }
-//     }
-//     else if (e.altKey && e.key == "s") {
-//         e.preventDefault();
-//         playerSelection = "Scissors";
-//         console.log("You selected: " + playerSelection);
-//         if (againstCPU) playerVsCpu();
-//         else {
-//             playerVsPlayer();
-//         }
-//     }
-//     else if (e.altKey && e.key == "l") {
-//         e.preventDefault();
-//         playerSelection = "Lizard";
-//         console.log("You selected: " + playerSelection);
-//         if (againstCPU) playerVsCpu();
-//         else {
-//             playerVsPlayer();
-//         }
-//     }
-//     else if (e.altKey && e.key == "k") {
-//         e.preventDefault();
-//         playerSelection = "Spock";
-//         console.log("You selected: " + playerSelection);
-//         if (againstCPU) playerVsCpu();
-//         else {
-//             playerVsPlayer();
-//         }
-//     }
-// }
 
 //Player vs CPU
 async function playerVsCpu() {
@@ -328,42 +279,301 @@ async function playerVsCpu() {
 function playerVsPlayer() {
     let injectResult = document.getElementById("injectResult");
     let player1ScoreAdd = document.getElementById("player1ScoreAdd");
-    let player2ScoreAdd = document.getElementById("cpuScoreAdd");
-    let player1Score = 0;
-    let player2Score = 0;
+    let player2ScoreAdd = document.getElementById("player2ScoreAdd");
+   
+    againstPvp = true;
 
-    if (playerSelection == player2Selection)
-        alert("It's a draw!");
+    document.onkeydown = function (e) {
+        if (e.altKey && e.key == "r" && unlocked) {
+            unlocked = false;
+            e.preventDefault();
+            playerSelection = "Rock";
+            let player1Img = document.getElementById("player1Img").src = "../images/rock.png";
+            console.log("Player 1 selected: " + playerSelection);
+            if (againstCPU) playerVsCpu();
+            else {
+                playerVsPlayer();
+            }
+        }
+        else if (e.altKey && e.key == "p" && unlocked) {
+            unlocked = false;
+            e.preventDefault();
+            playerSelection = "Paper";
+            let player1Img = document.getElementById("player1Img").src = "../images/paper.png";
+            console.log("Player 1 selected: " + playerSelection);
+            if (againstCPU) playerVsCpu();
+            else {
+                playerVsPlayer();
+            }
+        }
+        else if (e.altKey && e.key == "s" && unlocked) {
+            unlocked = false;
+            e.preventDefault();
+            playerSelection = "Scissors";
+            let player1Img = document.getElementById("player1Img").src = "../images/scissors.png";
+            console.log("Player 1 selected: " + playerSelection);
+            if (againstCPU) playerVsCpu();
+            else {
+                playerVsPlayer();
+            }
+        }
+        else if (e.altKey && e.key == "l" && unlocked) {
+            unlocked = false;
+            e.preventDefault();
+            playerSelection = "Lizard";
+            let player1Img = document.getElementById("player1Img").src = "../images/lizard.png";
+            console.log("Player 1 selected: " + playerSelection);
+            if (againstCPU) playerVsCpu();
+            else {
+                playerVsPlayer();
+            }
+        }
+        else if (e.altKey && e.key == "k" && unlocked) {
+            unlocked = false;
+            e.preventDefault();
+            playerSelection = "Spock";
+            let player1Img = document.getElementById("player1Img").src = "../images/spock.png";
+            console.log("Player 1 selected: " + playerSelection);
+            if (againstCPU) playerVsCpu();
+            else {
+                playerVsPlayer();
+            } t
+        }
+    }
+
+    document.onkeydown = function (e) {
+        if (e.altKey && e.key == "q" && unlocked) {
+            unlocked = false;
+            e.preventDefault();
+            playerSelection = "Rock";
+            let player1Img = document.getElementById("player1Img").src = "../images/rock.png";
+            console.log("Player 2 selected: " + player2Selection);
+            if (againstCPU) playerVsCpu();
+            else {
+                playerVsPlayer();
+            }
+        }
+        else if (e.altKey && e.key == "w" && unlocked) {
+            unlocked = false;
+            e.preventDefault();
+            playerSelection = "Paper";
+            let player1Img = document.getElementById("player1Img").src = "../images/paper.png";
+            console.log("Player 2 selected: " + player2Selection);
+            if (againstCPU) playerVsCpu();
+            else {
+                playerVsPlayer();
+            }
+        }
+        else if (e.altKey && e.key == "e" && unlocked) {
+            unlocked = false;
+            e.preventDefault();
+            playerSelection = "Scissors";
+            let player1Img = document.getElementById("player1Img").src = "../images/scissors.png";
+            console.log("Player 2 selected: " + player2Selection);
+            if (againstCPU) playerVsCpu();
+            else {
+                playerVsPlayer();
+            }
+        }
+        else if (e.altKey && e.key == "f" && unlocked) {
+            unlocked = false;
+            e.preventDefault();
+            playerSelection = "Lizard";
+            let player1Img = document.getElementById("player1Img").src = "../images/lizard.png";
+            console.log("Player 2 selected: " + player2Selection);
+            if (againstCPU) playerVsCpu();
+            else {
+                playerVsPlayer();
+            }
+        }
+        else if (e.altKey && e.key == "t" && unlocked) {
+            unlocked = false;
+            e.preventDefault();
+            playerSelection = "Spock";
+            let player1Img = document.getElementById("player1Img").src = "../images/spock.png";
+            console.log("Player 2 selected: " + player2Selection);
+            if (againstCPU) playerVsCpu();
+            else {
+                playerVsPlayer();
+            } t
+        }
+    }
+
+    if (player2Selection == playerSelection) {
+        if (player2Selection == "Rock") {
+            console.log("Player 2 selected " + player2Selection);
+            let player2Img = document.getElementById("player2Img").src = "../images/rock.png";
+        }
+        if (player2Selection == "Paper") {
+            console.log("Player 2 selected: " + player2Selection);
+            let player2Img = document.getElementById("player2Img").src = "../images/paper.png";
+        }
+        if (player2Selection == "Scissors") {
+            console.log("Player 2 selected " + player2Selection);
+            let player2Img = document.getElementById("player2Img").src = "../images/scissors.png";
+        }
+        if (player2Selection == "Lizard") {
+            console.log("Player 2 selected " + player2Selection);
+            let player2Img = document.getElementById("player2Img").src = "../images/lizard.png";
+        }
+        if (player2Selection == "Spock") {
+            console.log("Player 2 selected " + player2Selection);
+            let player2Img = document.getElementById("player2Img").src = "../images/spock.png";
+        }
+        injectResult.innerText = "It's a draw!";
+    }
     if (playerSelection == "Rock") {
-        if (computerRandom == "Scissors") alert("Player 1 Wins! Rock smashes Scissors.")
-        if (computerRandom == "Lizard") alert("Player 1 Wins! Rock smashes Lizard.")
-        if (computerRandom == "Paper") alert("Player 2 Wins! Paper covers Rock.")
-        if (computerRandom == "Spock") alert("Player 2 Wins! Spock vaporizes Rock.")
+        if (player2Selection == "Scissors") {
+            console.log("Player 2 selected " + player2Selection);
+            player1Score++;
+            let player2Img = document.getElementById("player2Img").src = "../images/scissors.png";
+            player1ScoreAdd.innerText = player1Score;
+            injectResult.innerText = "Winner! Rock smashes Scissors.";
+        }
+
+        if (player2Selection == "Lizard") {
+            console.log("Player 2 selected " + player2Selection);
+            player1Score++;
+            let player2Img = document.getElementById("player2Img").src = "../images/lizard.png";
+            player1ScoreAdd.innerText = player1Score;
+            injectResult.innerText = "Winner! Rock smashes Lizard.";
+        }
+        if (player2Selection == "Paper") {
+            console.log("Player 2 selected " + player2Selection);
+            player2Score++;
+            let player2Img = document.getElementById("player2Img").src = "../images/paper.png";
+            player2ScoreAdd.innerText = player2Score;
+            injectResult.innerText = "Aww you lost! Paper covers Rock.";
+        }
+        if (player2Selection == "Spock") {
+            console.log("Player 2 selected " + player2Selection);
+            player2Score++;
+            let player2Img = document.getElementById("player2Img").src = "../images/spock.png";
+            player2ScoreAdd.innerText = player2Score;
+            injectResult.innerText = "Aww you lost! Spock vaporizes Rock.";
+        }
     }
     if (playerSelection == "Paper") {
-        if (computerRandom == "Spock") alert("Player 1 Wins! Paper disproves Spock.")
-        if (computerRandom == "Rock") alert("Player 1 Wins! Paper covers Rock.")
-        if (computerRandom == "Scissors") alert("Player 2 Wins! Scissors cuts Paper.")
-        if (computerRandom == "Lizard") alert("Player 2 Wins! Lizard eats Paper.")
+        if (player2Selection == "Spock") {
+            console.log("Player 2 selected " + player2Selection);
+            player1Score++;
+            let player2Img = document.getElementById("player2Img").src = "../images/spock.png";
+            player1ScoreAdd.innerText = player1Score;
+            injectResult.innerText = "Winner! Paper disproves Spock.";
+        }
+        if (player2Selection == "Rock") {
+            console.log("Player 2 selected " + player2Selection);
+            player1Score++;
+            let player2Img = document.getElementById("player2Img").src = "../images/rock.png";
+            player1ScoreAdd.innerText = player1Score;
+            injectResult.innerText = "Winner! Paper covers Rock.";
+        }
+        if (player2Selection == "Scissors") {
+            console.log("Player 2 selected " + player2Selection);
+            player2Score++;
+            let player2Img = document.getElementById("player2Img").src = "../images/scissors.png";
+            player2ScoreAdd.innerText = player2Score;
+            injectResult.innerText = "Aww you lost! Scissors cuts Paper.";
+        }
+        if (player2Selection == "Lizard") {
+            console.log("Player 2 selected " + player2Selection);
+            player2Score++;
+            let player2Img = document.getElementById("player2Img").src = "../images/lizard.png";
+            player2ScoreAdd.innerText = player2Score;
+            injectResult.innerText = "Aww you lost! Lizard eats Paper.";
+        }
     }
     if (playerSelection == "Scissors") {
-        if (computerRandom == "Lizard") alert("Player 1 Wins! Scissors decapitates Lizard.")
-        if (computerRandom == "Paper") alert("Player 1 Wins! Scissors cuts paper.")
-        if (computerRandom == "Rock") alert("Player 2 Wins! Rock smashes Scissors.")
-        if (computerRandom == "Spock") alert("Player 2 Wins! Spock smashes Scissors.")
+        if (player2Selection == "Lizard") {
+            console.log("Player 2 selected " + player2Selection);
+            player1Score++;
+            let player2Img = document.getElementById("player2Img").src = "../images/lizard.png";
+            player1ScoreAdd.innerText = player1Score;
+            injectResult.innerText = "Winner! Scissors decapitates Lizard.";
+        }
+        if (player2Selection == "Paper") {
+            console.log("Player 2 selected " + player2Selection);
+            player1Score++;
+            let player2Img = document.getElementById("player2Img").src = "../images/paper.png";
+            player1ScoreAdd.innerText = player1Score;
+            injectResult.innerText = "Winner! Scissors cuts paper.";
+        }
+        if (player2Selection == "Rock") {
+            console.log("Player 2 selected " + player2Selection);
+            player2Score++;
+            let player2Img = document.getElementById("player2Img").src = "../images/rock.png";
+            player2ScoreAdd.innerText = player2Score;
+            injectResult.innerText = "Aww you lost! Rock smashes Scissors.";
+        }
+        if (player2Selection == "Spock") {
+            console.log("Player 2 selected " + player2Selection);
+            player2Score++;
+            let player2Img = document.getElementById("player2Img").src = "../images/spock.png";
+            player2ScoreAdd.innerText = player2Score;
+            injectResult.innerText = "Aww you lost! Spock smashes Scissors.";
+        }
     }
     if (playerSelection == "Lizard") {
-        if (computerRandom == "Paper") alert("Player 1 Wins! Lizard eats Paper.")
-        if (computerRandom == "Spock") alert("Player 1 Wins! Lizard poisons Spock.")
-        if (computerRandom == "Rock") alert("Player 2 Wins! Rock smashes Lizard.")
-        if (computerRandom == "Scissors") alert("Player 2 Wins! Scissors decapitate Lizard.")
+        if (player2Selection == "Paper") {
+            console.log("Player 2 selected " + player2Selection);
+            player1Score++;
+            let player2Img = document.getElementById("player2Img").src = "../images/paper.png";
+            player1ScoreAdd.innerText = player1Score;
+            injectResult.innerText = "Winner! Lizard eats Paper.";
+        }
+        if (player2Selection == "Spock") {
+            console.log("Player 2 selected " + player2Selection);
+            player1Score++;
+            let player2Img = document.getElementById("player2Img").src = "../images/spock.png";
+            player1ScoreAdd.innerText = player1Score;
+            injectResult.innerText = "Winner! Lizard poisons Spock.";
+        }
+        if (player2Selection == "Rock") {
+            console.log("Player 2 selected " + player2Selection);
+            player2Score++;
+            let player2Img = document.getElementById("player2Img").src = "../images/rock.png";
+            player2ScoreAdd.innerText = player2Score;
+            injectResult.innerText = "Aww you lost! Rock smashes Lizard.";
+        }
+        if (player2Selection == "Scissors") {
+            console.log("Player 2 selected " + player2Selection);
+            player2Score++;
+            let player2Img = document.getElementById("player2Img").src = "../images/scissors.png";
+            player2ScoreAdd.innerText = player2Score;
+            injectResult.innerText = "Aww you lost! Scissors decapitate Lizard.";
+        }
     }
     if (playerSelection == "Spock") {
-        if (computerRandom == "Rock") alert("Player 1 Wins! Spock vaporizes Rock.")
-        if (computerRandom == "Scissors") alert("Player 1 Wins! Spock smashes Scissors.")
-        if (computerRandom == "Paper") alert("Player 2 Wins! Paper disproves Spock.")
-        if (computerRandom == "Lizard") alert("Player 2 Wins! Lizard poisons Spock.")
+        if (player2Selection == "Rock") {
+            console.log("Player 2 selected " + player2Selection);
+            player1Score++;
+            let player2Img = document.getElementById("player2Img").src = "../images/rock.png";
+            player1ScoreAdd.innerText = player1Score;
+            injectResult.innerText = "Winner! Spock vaporizes Rock.";
+        }
+        if (player2Selection == "Scissors") {
+            console.log("Player 2 selected " + player2Selection);
+            player1Score++;
+            let player2Img = document.getElementById("player2Img").src = "../images/scissors.png";
+            player1ScoreAdd.innerText = player1Score;
+            injectResult.innerText = "Winner! Spock smashes Scissors.";
+        }
+        if (player2Selection == "Paper") {
+            console.log("Player 2 selected " + player2Selection);
+            player2Score++;
+            let player2Img = document.getElementById("player2Img").src = "../images/paper.png";
+            player2ScoreAdd.innerText = player2Score;
+            injectResult.innerText = "Aww you lost! Paper disproves Spock.";
+        }
+        if (player2Selection == "Lizard") {
+            console.log("Player 2 selected " + player2Selection);
+            player2Score++;
+            let player2Img = document.getElementById("player2Img").src = "../images/lizard.png";
+            player2ScoreAdd.innerText = player2Score;
+            injectResult.innerText = "Aww you lost! Lizard poisons Spock.";
+        }
     }
+    console.log(gameCount);
 }
 
 //Injecting game pages and buttons
@@ -395,17 +605,24 @@ function loadGameModeBtns() {
         })
         .then((html) => {
             injectBtns.innerHTML = html;
-
             let oneGame = document.getElementById("oneGame");
             oneGame.addEventListener("click", () => {
                 setTimeout(() => {
+                if(againstCPU = true){
+
                     loadPlayerVsCpu("../pages/playerVsCpu.html");
-                    //loadGameModeBtns("../gameModeBtns.html");
                     playerVsCpu();
                     let removeBtn = document.getElementById("removeBtn").classList.add("abraCadabra");
                     let roundsAmount1 = document.getElementById("roundsAmount1").innerText = "Round";
                     let displayRounds = document.getElementById("displayRounds").classList.remove("d-none");
-
+                }
+                if(againstPvp = true){
+                    loadPlayerVsCpu("../pages/pvp.html");
+                    //playerVsPlayer();
+                    let removeBtn = document.getElementById("removeBtn").classList.add("abraCadabra");
+                    let roundsAmount1 = document.getElementById("roundsAmount1").innerText = "Round";
+                    let displayRounds = document.getElementById("displayRounds").classList.remove("d-none");
+                }
                 }, 1000);
             });
 
@@ -439,7 +656,6 @@ function loadGameModeBtns() {
                                     nextRoundBtn.classList.add("d-none");
                                 }
                                 else {
-
                                     console.log(gameCount)
                                     roundsAmount2.innerHTML = gameCount;
                                     let injectResult = document.getElementById("injectResult").innerText = "Select your weapon!";
@@ -449,7 +665,6 @@ function loadGameModeBtns() {
                             }, 1000);
                         }
                     });
-
                 }, 1000);
             });
 
@@ -484,7 +699,6 @@ function loadGameModeBtns() {
                                     nextRoundBtn.classList.add("d-none");
                                 }
                                 else {
-
                                     console.log(gameCount)
                                     roundsAmount2.innerHTML = gameCount;
                                     let injectResult = document.getElementById("injectResult").innerText = "Select your weapon!";
@@ -495,15 +709,6 @@ function loadGameModeBtns() {
                         }
                     });
                 }, 1000);
-
-
             });
-
-            function nextRound() {
-                if (bestOfFiveMode) {
-
-                }
-            }
-
         });
 }
